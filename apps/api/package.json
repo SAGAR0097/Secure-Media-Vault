@@ -1,0 +1,26 @@
+{
+  "name": "secure-media-vault-api",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "cross-env TS_NODE_CACHE=false ts-node-dev src/index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@graphql-yoga/node": "^2.13.2",
+    "@supabase/supabase-js": "^2.0.0",
+    "dotenv": "^16.0.0",
+    "graphql": "^16.0.0",
+    "graphql-tag": "^2.12.6",
+    "node-fetch": "^2.7.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.1",
+    "@types/node-fetch": "^2.6.4",
+    "cross-env": "^7.0.3",
+    "supabase": "^2.45.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.0.0"
+  }
+}

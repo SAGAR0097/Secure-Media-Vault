@@ -1,0 +1,11 @@
+# Copy this to .env and replace the values
+
+# Supabase Configuration
+SUPABASE_URL=https://YOUR_PROJECT_REF.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+
+# Edge Function URL (replace YOUR_PROJECT_REF with your actual project reference)
+EDGE_FUNCTION_URL=https://YOUR_PROJECT_REF.functions.supabase.co/hash-object
+
+# Database Configuration (if needed)
+DATABASE_URL=your_database_url

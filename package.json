@@ -1,0 +1,21 @@
+{
+    "name": "secure-media-vault",
+    "private": true,
+    "scripts": {
+        "dev": "pnpm --filter secure-media-vault-api dev & pnpm --filter secure-media-vault-web dev",
+        "build": "pnpm --filter secure-media-vault-api build && pnpm --filter secure-media-vault-web build",
+        "lint": "eslint . --ext .ts,.tsx",
+        "test": "jest"
+    },
+    "devDependencies": {
+        "@types/node": "^24.5.2",
+        "eslint": "^8.0.0",
+        "jest": "^29.0.0",
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@supabase/auth-ui-react": "^0.4.7",
+        "@supabase/supabase-js": "^2.58.0",
+        "cors": "^2.8.5"
+    }
+}
