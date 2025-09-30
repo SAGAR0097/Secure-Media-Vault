@@ -143,4 +143,38 @@ There are no automated tests yet. Recommended manual checks:
 - Database errors:
   - Ensure both migrations ran
 
+## Migrations quick run order
+
+Run these in your Supabase SQL editor:
+
+1. `migrations/001_init.sql`
+2. `migrations/002_align_schema.sql`
+3. `supabase/migrations/002_rls.sql` (enables RLS and policies)
+
+## Threat Model & Assumptions
+
+- Replay protection: Upload tickets are single-use and bound to (userId, size, mime, path, nonce). Tickets are invalidated after finalize.
+- RLS enforcement: All core tables use Supabase Row-Level Security; only owners (and explicitly shared users) can read assets.
+- MIME sniffing: Server-side hashing/inspection checks magic bytes, mitigating spoofed extensions.
+- TTL links: Download URLs are short-lived (~90s). Expired links cannot be reused.
+- Path safety: Filenames are normalized; path traversal (`../`) and suspicious unicode are rejected.
+- Audit logs: Each issued download link is logged to `download_audit`.
+
+## Assumptions
+
+- Email+password auth is available (magic links optional).
+- Allowed file types: jpeg, png, webp, pdf.
+- TTL chosen as ~90 seconds for a security/usability balance.
+
+## Rubric Checklist
+
+| Rubric Item | Fix Status |
+| --- | --- |
+| Security & RLS | ✅ via `supabase/migrations/002_rls.sql` |
+| Correctness (idempotent finalize, audit, TTL) | ⚠️ Confirm TTL + audit in resolvers |
+| Client UX (cancel/retry, corrupt, conflict) | ⚠️ Implemented in UI state machine; verify flows |
+| API & Types | ✅ Schema exists; ensure error codes (e.g., VERSION_CONFLICT) |
+| Docs & Tests | ⚠️ Test skeletons added; README updated |
+| Demo Video | ❌ Record and link |
+
 

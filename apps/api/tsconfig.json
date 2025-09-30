@@ -2,6 +2,12 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "target": "ES2020",
+    "module": "commonjs"
+  },
+  "include": ["src"],
+  "exclude": ["tests", "**/*.test.ts", "node_modules"]
 }
